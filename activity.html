@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FT-Fitness | Activity</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="images/logo.png" alt="FT-Fitness Logo" class="sidebar-logo">
+                <span>FT-Fitness</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="dashboard.html">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="activity.html">
+                            <i class="fas fa-running"></i>
+                            <span>Activity</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="nutrition.html">
+                            <i class="fas fa-utensils"></i>
+                            <span>Nutrition</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="goals.html">
+                            <i class="fas fa-bullseye"></i>
+                            <span>Goals</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="profile.html">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <h1>Activity</h1>
+                    <p class="welcome-message">Track and log your workouts</p>
+                </div>
+                <div class="header-right">
+                    <div class="notification-bell">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="images/user-avatar.jpg" alt="User Avatar" id="userAvatar">
+                    </div>
+                </div>
+            </header>
+
+            <div class="activity-content">
+                <div class="activity-header">
+                    <div class="activity-stats">
+                        <div class="stat-card">
+                            <h3>This Week</h3>
+                            <div class="stat-values">
+                                <div>
+                                    <span class="stat-number">4</span>
+                                    <span class="stat-label">Workouts</span>
+                                </div>
+                                <div>
+                                    <span class="stat-number">3h 45m</span>
+                                    <span class="stat-label">Time</span>
+                                </div>
+                                <div>
+                                    <span class="stat-number">2,450</span>
+                                    <span class="stat-label">Calories</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="activity-filters">
+                            <select id="activityTypeFilter">
+                                <option value="all">All Activities</option>
+                                <option value="running">Running</option>
+                                <option value="cycling">Cycling</option>
+                                <option value="swimming">Swimming</option>
+                                <option value="weight">Weight Training</option>
+                                <option value="yoga">Yoga/Pilates</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div class="date-filter">
+                                <input type="text" id="activityDateRange" placeholder="Select date range">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="addActivityBtn">
+                        <i class="fas fa-plus"></i> Add Activity
+                    </button>
+                </div>
+
+                <!-- Activity Log Form (Initially Hidden) -->
+                <div class="activity-form-container" id="activityFormContainer" style="display: none;">
+                    <form id="activityForm" class="activity-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="activityType">Activity Type</label>
+                                <select id="activityType" name="activityType" required>
+                                    <option value="">Select activity</option>
+                                    <option value="running">Running</option>
+                                    <option value="cycling">Cycling</option>
+                                    <option value="swimming">Swimming</option>
+                                    <option value="weight">Weight Training</option>
+                                    <option value="yoga">Yoga/Pilates</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="activityDate">Date</label>
+                                <input type="text" id="activityDate" name="activityDate" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="activityDuration">Duration (minutes)</label>
+                                <input type="number" id="activityDuration" name="activityDuration" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="activityCalories">Calories Burned</label>
+                                <input type="number" id="activityCalories" name="activityCalories" min="1" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="activityDistance">Distance (miles) - Optional</label>
+                            <input type="number" id="activityDistance" name="activityDistance" min="0" step="0.1">
+                        </div>
+                        <div class="form-group">
+                            <label for="activityNotes">Notes</label>
+                            <textarea id="activityNotes" name="activityNotes" rows="3" placeholder="Any additional details about your workout..."></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="cancelActivityBtn">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Log Activity</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Activity List -->
+                <div class="activity-list-container">
+                    <div class="activity-list-header">
+                        <h2>Recent Activities</h2>
+                        <div class="view-options">
+                            <button class="view-option active" data-view="list"><i class="fas fa-list"></i></button>
+                            <button class="view-option" data-view="grid"><i class="fas fa-th-large"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="activity-list" id="activityListView">
+                        <!-- Activity items will be loaded here -->
+                        <div class="activity-item">
+                            <div class="activity-icon running">
+                                <i class="fas fa-running"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h3>Morning Run</h3>
+                                <div class="activity-meta">
+                                    <span><i class="fas fa-clock"></i> 28 min</span>
+                                    <span><i class="fas fa-fire"></i> 320 cal</span>
+                                    <span><i class="fas fa-route"></i> 3.2 mi</span>
+                                </div>
+                                <p class="activity-notes">Nice morning run along the river. Felt strong today!</p>
+                            </div>
+                            <div class="activity-date">
+                                <span class="date">Today</span>
+                                <span class="time">7:30 AM</span>
+                                <div class="activity-actions">
+                                    <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon weight">
+                                <i class="fas fa-dumbbell"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h3>Weight Training</h3>
+                                <div class="activity-meta">
+                                    <span><i class="fas fa-clock"></i> 45 min</span>
+                                    <span><i class="fas fa-fire"></i> 280 cal</span>
+                                    <span><i class="fas fa-dumbbell"></i> Upper Body</span>
+                                </div>
+                                <p class="activity-notes">Chest and back workout. Increased weights on bench press.</p>
+                            </div>
+                            <div class="activity-date">
+                                <span class="date">Yesterday</span>
+                                <span class="time">6:00 PM</span>
+                                <div class="activity-actions">
+                                    <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon swimming">
+                                <i class="fas fa-swimmer"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h3>Swimming</h3>
+                                <div class="activity-meta">
+                                    <span><i class="fas fa-clock"></i> 40 min</span>
+                                    <span><i class="fas fa-fire"></i> 350 cal</span>
+                                    <span><i class="fas fa-swimming-pool"></i> 30 laps</span>
+                                </div>
+                                <p class="activity-notes">Focus on freestyle technique. Improved my breathing pattern.</p>
+                            </div>
+                            <div class="activity-date">
+                                <span class="date">Yesterday</span>
+                                <span class="time">12:00 PM</span>
+                                <div class="activity-actions">
+                                    <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon yoga">
+                                <i class="fas fa-spa"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h3>Yoga Session</h3>
+                                <div class="activity-meta">
+                                    <span><i class="fas fa-clock"></i> 60 min</span>
+                                    <span><i class="fas fa-fire"></i> 220 cal</span>
+                                    <span><i class="fas fa-heart"></i> Vinyasa Flow</span>
+                                </div>
+                                <p class="activity-notes">Evening yoga to stretch and relax. Focused on hip openers.</p>
+                            </div>
+                            <div class="activity-date">
+                                <span class="date">2 days ago</span>
+                                <span class="time">7:00 PM</span>
+                                <div class="activity-actions">
+                                    <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="activity-grid" id="activityGridView" style="display: none;">
+                        <!-- Grid view would be loaded here -->
+                    </div>
+
+                    <div class="load-more">
+                        <button class="btn btn-secondary">Load More Activities</button>
+                    </div>
+                </div>
+
+                <!-- Activity Charts -->
+                <div class="activity-charts">
+                    <div class="chart-container">
+                        <h2>Weekly Activity Breakdown</h2>
+                        <div class="chart" id="activityTypeChart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h2>Monthly Progress</h2>
+                        <div class="chart" id="activityTrendChart"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="js/activity.js"></script>
+</body>
+</html>

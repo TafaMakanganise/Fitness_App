@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FT-Fitness | Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="images/logo.png" alt="FT-Fitness Logo" class="sidebar-logo">
+                <span>FT-Fitness</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="dashboard.html">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="activity.html">
+                            <i class="fas fa-running"></i>
+                            <span>Activity</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="nutrition.html">
+                            <i class="fas fa-utensils"></i>
+                            <span>Nutrition</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="goals.html">
+                            <i class="fas fa-bullseye"></i>
+                            <span>Goals</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="profile.html">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <h1>Dashboard</h1>
+                    <p class="welcome-message">Welcome back, <span id="username">Alex</span>!</p>
+                </div>
+                <div class="header-right">
+                    <div class="notification-bell">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="images/user-avatar.jpg" alt="User Avatar" id="userAvatar">
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-content">
+                <!-- Summary Cards -->
+                <section class="summary-cards">
+                    <div class="card">
+                        <div class="card-icon" style="background-color: #4e73df;">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Calories Burned</h3>
+                            <p class="card-value">1,250</p>
+                            <p class="card-subtext">Today</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon" style="background-color: #1cc88a;">
+                            <i class="fas fa-walking"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Steps</h3>
+                            <p class="card-value">8,742</p>
+                            <p class="card-subtext">72% of goal</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon" style="background-color: #36b9cc;">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Workout Time</h3>
+                            <p class="card-value">45 min</p>
+                            <p class="card-subtext">Today</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon" style="background-color: #f6c23e;">
+                            <i class="fas fa-weight"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Weight</h3>
+                            <p class="card-value">165 lbs</p>
+                            <p class="card-subtext">-2 lbs this week</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Activity Chart -->
+                <section class="activity-chart">
+                    <div class="section-header">
+                        <h2>Weekly Activity</h2>
+                        <select id="activityPeriod">
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="year">This Year</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="activityChart"></canvas>
+                    </div>
+                </section>
+
+                <!-- Recent Activity and Goals -->
+                <section class="dashboard-grid">
+                    <div class="recent-activity">
+                        <div class="section-header">
+                            <h2>Recent Activity</h2>
+                            <a href="activity.html" class="view-all">View All</a>
+                        </div>
+                        <ul class="activity-list">
+                            <li>
+                                <div class="activity-icon">
+                                    <i class="fas fa-running"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <h4>Morning Run</h4>
+                                    <p>3.2 miles • 28 min • 320 cal</p>
+                                </div>
+                                <div class="activity-time">
+                                    Today, 7:30 AM
+                                </div>
+                            </li>
+                            <li>
+                                <div class="activity-icon">
+                                    <i class="fas fa-dumbbell"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <h4>Weight Training</h4>
+                                    <p>Upper Body • 45 min • 280 cal</p>
+                                </div>
+                                <div class="activity-time">
+                                    Yesterday, 6:00 PM
+                                </div>
+                            </li>
+                            <li>
+                                <div class="activity-icon">
+                                    <i class="fas fa-swimmer"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <h4>Swimming</h4>
+                                    <p>30 laps • 40 min • 350 cal</p>
+                                </div>
+                                <div class="activity-time">
+                                    Yesterday, 12:00 PM
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="goals-progress">
+                        <div class="section-header">
+                            <h2>Goals Progress</h2>
+                            <a href="goals.html" class="view-all">View All</a>
+                        </div>
+                        <div class="goal-item">
+                            <div class="goal-info">
+                                <h4>Weekly Workouts</h4>
+                                <p>4 of 5 completed</p>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 80%; background-color: #4e73df;"></div>
+                            </div>
+                        </div>
+                        <div class="goal-item">
+                            <div class="goal-info">
+                                <h4>Daily Steps</h4>
+                                <p>8,742 of 12,000</p>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 73%; background-color: #1cc88a;"></div>
+                            </div>
+                        </div>
+                        <div class="goal-item">
+                            <div class="goal-info">
+                                <h4>Weight Loss</h4>
+                                <p>8 of 15 lbs</p>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 53%; background-color: #f6c23e;"></div>
+                            </div>
+                        </div>
+                        <div class="goal-item">
+                            <div class="goal-info">
+                                <h4>Water Intake</h4>
+                                <p>5 of 8 glasses</p>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 63%; background-color: #36b9cc;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Nutrition Summary -->
+                <section class="nutrition-summary">
+                    <div class="section-header">
+                        <h2>Today's Nutrition</h2>
+                        <a href="nutrition.html" class="view-all">View Details</a>
+                    </div>
+                    <div class="macros-container">
+                        <div class="macro-circle">
+                            <div class="circle-progress" id="calories-circle">
+                                <svg viewBox="0 0 36 36">
+                                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path class="circle-fill" stroke-dasharray="65, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                </svg>
+                                <div class="circle-info">
+                                    <span class="circle-value">1,650</span>
+                                    <span class="circle-label">Calories</span>
+                                </div>
+                            </div>
+                            <p class="macro-target">Target: 2,200</p>
+                        </div>
+                        <div class="macro-details">
+                            <div class="macro-item">
+                                <div class="macro-label">
+                                    <span class="macro-color" style="background-color: #4e73df;"></span>
+                                    <span>Protein</span>
+                                </div>
+                                <div class="macro-amount">120g / 150g</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 80%; background-color: #4e73df;"></div>
+                                </div>
+                            </div>
+                            <div class="macro-item">
+                                <div class="macro-label">
+                                    <span class="macro-color" style="background-color: #1cc88a;"></span>
+                                    <span>Carbs</span>
+                                </div>
+                                <div class="macro-amount">210g / 250g</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 84%; background-color: #1cc88a;"></div>
+                                </div>
+                            </div>
+                            <div class="macro-item">
+                                <div class="macro-label">
+                                    <span class="macro-color" style="background-color: #f6c23e;"></span>
+                                    <span>Fats</span>
+                                </div>
+                                <div class="macro-amount">60g / 70g</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 86%; background-color: #f6c23e;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const userName = localStorage.getItem("userName");
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    if (!isLoggedIn || !userName) {
+        window.location.href = "login.html"; // Redirect if not logged in
+        return;
+    }
+
+    // Show correct name
+    document.getElementById("username").textContent = userName;
+
+    // Logout functionality
+    document.getElementById("logoutBtn").addEventListener("click", function (e) {
+        e.preventDefault();
+        localStorage.clear();
+        window.location.href = "login.html";
+    });
+});
+</script>
+
+</body>
+</html>

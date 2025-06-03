@@ -1,0 +1,155 @@
+/* Landing Page Animations */
+.hero-content {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-image {
+    animation: fadeIn 1s ease-out;
+}
+
+.floating-icon.icon-1 {
+    animation: float 6s ease-in-out infinite, fadeIn 1s ease-out;
+}
+
+.floating-icon.icon-2 {
+    animation: float 5s ease-in-out infinite 1s, fadeIn 1s ease-out 0.3s;
+}
+
+.floating-icon.icon-3 {
+    animation: float 7s ease-in-out infinite 0.5s, fadeIn 1s ease-out 0.6s;
+}
+
+.floating-icon.icon-4 {
+    animation: float 6.5s ease-in-out infinite 1.5s, fadeIn 1s ease-out 0.9s;
+}
+
+.feature-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.feature-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.feature-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.feature-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.feature-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.testimonial-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.testimonial-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.testimonial-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+/* Auth Page Animations */
+.auth-card {
+    animation: slideInLeft 0.5s ease-out;
+}
+
+.auth-image {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Dashboard Animations */
+.summary-cards .card {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.summary-cards .card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.summary-cards .card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.summary-cards .card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.summary-cards .card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.activity-item {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.activity-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.activity-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.activity-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Element specific animations */
+.card:hover {
+    animation: pulse 0.5s ease;
+}
+
+.btn-primary:hover {
+    animation: pulse 0.3s ease;
+}

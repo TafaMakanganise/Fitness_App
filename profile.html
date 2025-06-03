@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FT-Fitness | Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="images/logo.png" alt="FT-Fitness Logo" class="sidebar-logo">
+                <span>FT-Fitness</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="dashboard.html">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="activity.html">
+                            <i class="fas fa-running"></i>
+                            <span>Activity</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="nutrition.html">
+                            <i class="fas fa-utensils"></i>
+                            <span>Nutrition</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="goals.html">
+                            <i class="fas fa-bullseye"></i>
+                            <span>Goals</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="profile.html">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <h1>Profile</h1>
+                    <p class="welcome-message">Manage your account and settings</p>
+                </div>
+                <div class="header-right">
+                    <div class="notification-bell">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="images/user-avatar.jpg" alt="User Avatar" id="userAvatar">
+                    </div>
+                </div>
+            </header>
+
+            <div class="profile-content">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <img src="images/user-avatar.jpg" alt="User Avatar" id="profileAvatar">
+                        <button class="btn btn-text" id="changeAvatarBtn">Change Photo</button>
+                        <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="profile-info">
+                        <h2 id="profileName">Alex Johnson</h2>
+                        <p class="profile-email" id="profileEmail">alex.johnson@example.com</p>
+                        <p class="profile-member">Member since: <span id="memberSince">January 2023</span></p>
+                    </div>
+                </div>
+
+                <div class="profile-tabs">
+                    <button class="tab-btn active" data-tab="personal">Personal Info</button>
+                    <button class="tab-btn" data-tab="fitness">Fitness Stats</button>
+                    <button class="tab-btn" data-tab="settings">Settings</button>
+                </div>
+
+                <!-- Personal Info Tab -->
+                <div class="tab-content active" id="personalTab">
+                    <form id="personalInfoForm" class="profile-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" value="Alex" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" value="Johnson" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" value="alex.johnson@example.com" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="birthDate">Date of Birth</label>
+                                <input type="date" id="birthDate" name="birthDate" value="1990-05-15" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select id="gender" name="gender" required>
+                                    <option value="male" selected>Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                    <option value="prefer-not-to-say">Prefer not to say</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="height">Height (cm)</label>
+                                <input type="number" id="height" name="height" value="175" min="100" max="250" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="weight">Weight (kg)</label>
+                                <input type="number" id="weight" name="weight" value="75" min="30" max="300" step="0.1" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="fitnessLevel">Fitness Level</label>
+                            <select id="fitnessLevel" name="fitnessLevel" required>
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate" selected>Intermediate</option>
+                                <option value="advanced">Advanced</option>
+                                <option value="athlete">Athlete</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="cancelPersonalBtn">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Fitness Stats Tab -->
+                <div class="tab-content" id="fitnessTab">
+                    <div class="fitness-stats">
+                        <div class="stats-overview">
+                            <div class="stat-card">
+                                <h3>Total Workouts</h3>
+                                <p class="stat-value">87</p>
+                                <p class="stat-label">Since joining</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Total Distance</h3>
+                                <p class="stat-value">156.4</p>
+                                <p class="stat-label">Miles</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Calories Burned</h3>
+                                <p class="stat-value">42,580</p>
+                                <p class="stat-label">Total</p>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Current Streak</h3>
+                                <p class="stat-value">12</p>
+                                <p class="stat-label">Days</p>
+                            </div>
+                        </div>
+
+                        <div class="fitness-history">
+                            <h3>Weight History</h3>
+                            <div class="weight-chart" id="weightChart"></div>
+                            <div class="weight-stats">
+                                <div class="weight-stat">
+                                    <span class="stat-label">Starting Weight</span>
+                                    <span class="stat-value">82 kg</span>
+                                </div>
+                                <div class="weight-stat">
+                                    <span class="stat-label">Current Weight</span>
+                                    <span class="stat-value">75 kg</span>
+                                </div>
+                                <div class="weight-stat">
+                                    <span class="stat-label">Total Lost</span>
+                                    <span class="stat-value">7 kg</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="activity-preferences">
+                            <h3>Activity Preferences</h3>
+                            <div class="preferences-grid">
+                                <div class="preference-card">
+                                    <div class="preference-icon">
+                                        <i class="fas fa-running"></i>
+                                    </div>
+                                    <h4>Running</h4>
+                                    <p>Most frequent activity</p>
+                                </div>
+                                <div class="preference-card">
+                                    <div class="preference-icon">
+                                        <i class="fas fa-dumbbell"></i>
+                                    </div>
+                                    <h4>Weight Training</h4>
+                                    <p>3 times per week</p>
+                                </div>
+                                <div class="preference-card">
+                                    <div class="preference-icon">
+                                        <i class="fas fa-swimmer"></i>
+                                    </div>
+                                    <h4>Swimming</h4>
+                                    <p>Once per week</p>
+                                </div>
+                                <div class="preference-card">
+                                    <div class="preference-icon">
+                                        <i class="fas fa-biking"></i>
+                                    </div>
+                                    <h4>Cycling</h4>
+                                    <p>Weekends</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Tab -->
+                <div class="tab-content" id="settingsTab">
+                    <div class="settings-section">
+                        <h3>Account Settings</h3>
+                        <div class="settings-option">
+                            <div class="option-info">
+                                <h4>Change Password</h4>
+                                <p>Update your account password</p>
+                            </div>
+                            <button class="btn btn-secondary" id="changePasswordBtn">Change</button>
+                        </div>
+                        <div class="settings-option">
+                            <div class="option-info">
+                                <h4>Connected Accounts</h4>
+                                <p>Manage linked social accounts</p>
+                            </div>
+                            <button class="btn btn-secondary" id="connectedAccountsBtn">Manage</button>
+                        </div>
+                        <div class="settings-option">
+                            <div class="option-info">
+                                <h4>Notification Preferences</h4>
+                                <p>Customize your notification settings</p>
+                            </div>
+                            <button class="btn btn-secondary" id="notificationSettingsBtn">Settings</button>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>Privacy Settings</h3>
+                        <div class="settings-option">
+                            <div class="option-info">
+                                <h4>Profile Visibility</h4>
+                                <p>Control who can see your profile</p>
+                            </div>
+                            <select id="profileVisibility">
+                                <option value="public">Public</option>
+                                <option value="friends">Friends Only</option>
+                                <option value="private">Private</option>
+                            </select>
+                        </div>
+                        <div class="settings-option">
+                            <div class="option-info">
+                                <h4>Activity Sharing</h4>
+                                <p>Choose what activity data is shared</p>
+                            </div>
+                            <button class="btn btn-secondary" id="activitySharingBtn">Configure</button>
+                        </div>
+                    </div>
+
+                    <div class="settings-section danger-zone">
+                        <h3>Danger Zone</h3>
+                        <div class="settings-option">
+                            <div class="option-info">
+                                <h4>Delete Account</h4>
+                                <p>Permanently delete your account and all data</p>
+                            </div>
+                            <button class="btn btn-danger" id="deleteAccountBtn">Delete Account</button>
+                        </div>
+                        <div class="settings-option">
+                            <div class="option-info">
+                                <h4>Export Data</h4>
+                                <p>Download all your fitness data</p>
+                            </div>
+                            <button class="btn btn-secondary" id="exportDataBtn">Export</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/profile.js"></script>
+</body>
+</html>

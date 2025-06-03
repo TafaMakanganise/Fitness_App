@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FT-Fitness | Nutrition</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="images/logo.png" alt="FT-Fitness Logo" class="sidebar-logo">
+                <span>FT-Fitness</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="dashboard.html">
+                            <i class="fas fa-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="activity.html">
+                            <i class="fas fa-running"></i>
+                            <span>Activity</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="nutrition.html">
+                            <i class="fas fa-utensils"></i>
+                            <span>Nutrition</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="goals.html">
+                            <i class="fas fa-bullseye"></i>
+                            <span>Goals</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="profile.html">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Log Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <h1>Nutrition</h1>
+                    <p class="welcome-message">Track your food intake and macros</p>
+                </div>
+                <div class="header-right">
+                    <div class="notification-bell">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="images/user-avatar.jpg" alt="User Avatar" id="userAvatar">
+                    </div>
+                </div>
+            </header>
+
+            <div class="nutrition-content">
+                <div class="nutrition-header">
+                    <div class="date-selector">
+                        <button class="nav-btn" id="prevDay"><i class="fas fa-chevron-left"></i></button>
+                        <input type="text" id="nutritionDate" value="Today">
+                        <button class="nav-btn" id="nextDay"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <button class="btn btn-primary" id="addFoodBtn">
+                        <i class="fas fa-plus"></i> Add Food
+                    </button>
+                </div>
+
+                <!-- Nutrition Summary -->
+                <div class="nutrition-summary">
+                    <div class="macro-circles">
+                        <div class="macro-circle">
+                            <div class="circle-progress" id="calories-circle">
+                                <svg viewBox="0 0 36 36">
+                                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path class="circle-fill" stroke-dasharray="75, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                </svg>
+                                <div class="circle-info">
+                                    <span class="circle-value">1,650</span>
+                                    <span class="circle-label">Calories</span>
+                                </div>
+                            </div>
+                            <p class="macro-target">Target: 2,200</p>
+                        </div>
+                        <div class="macro-bars">
+                            <div class="macro-bar">
+                                <div class="macro-label">
+                                    <span class="macro-color" style="background-color: #4e73df;"></span>
+                                    <span>Protein</span>
+                                    <span class="macro-amount">120g / 150g</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 80%; background-color: #4e73df;"></div>
+                                </div>
+                            </div>
+                            <div class="macro-bar">
+                                <div class="macro-label">
+                                    <span class="macro-color" style="background-color: #1cc88a;"></span>
+                                    <span>Carbs</span>
+                                    <span class="macro-amount">210g / 250g</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 84%; background-color: #1cc88a;"></div>
+                                </div>
+                            </div>
+                            <div class="macro-bar">
+                                <div class="macro-label">
+                                    <span class="macro-color" style="background-color: #f6c23e;"></span>
+                                    <span>Fats</span>
+                                    <span class="macro-amount">60g / 70g</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 86%; background-color: #f6c23e;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Food Form (Initially Hidden) -->
+                <div class="nutrition-form-container" id="nutritionFormContainer" style="display: none;">
+                    <form id="nutritionForm" class="nutrition-form">
+                        <div class="form-header">
+                            <h3>Add Food Item</h3>
+                            <button type="button" class="close-btn" id="closeNutritionForm">&times;</button>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="foodName">Food Name</label>
+                                <input type="text" id="foodName" name="foodName" required placeholder="e.g., Grilled Chicken Breast">
+                            </div>
+                            <div class="form-group">
+                                <label for="mealType">Meal Type</label>
+                                <select id="mealType" name="mealType" required>
+                                    <option value="">Select meal</option>
+                                    <option value="breakfast">Breakfast</option>
+                                    <option value="lunch">Lunch</option>
+                                    <option value="dinner">Dinner</option>
+                                    <option value="snack">Snack</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="servingSize">Serving Size</label>
+                                <input type="text" id="servingSize" name="servingSize" required placeholder="e.g., 1 cup, 100g">
+                            </div>
+                            <div class="form-group">
+                                <label for="servings">Servings</label>
+                                <input type="number" id="servings" name="servings" min="0.1" step="0.1" value="1" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="calories">Calories</label>
+                                <input type="number" id="calories" name="calories" min="0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="protein">Protein (g)</label>
+                                <input type="number" id="protein" name="protein" min="0" step="0.1" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="carbs">Carbs (g)</label>
+                                <input type="number" id="carbs" name="carbs" min="0" step="0.1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fats">Fats (g)</label>
+                                <input type="number" id="fats" name="fats" min="0" step="0.1" required>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="cancelNutritionBtn">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Add Food</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Meal Sections -->
+                <div class="meal-sections">
+                    <div class="meal-section">
+                        <div class="meal-header">
+                            <h3><i class="fas fa-egg"></i> Breakfast</h3>
+                            <span class="meal-calories">520 cal</span>
+                        </div>
+                        <div class="food-items">
+                            <div class="food-item">
+                                <div class="food-info">
+                                    <h4>Scrambled Eggs</h4>
+                                    <p>2 large eggs, cooked with olive oil</p>
+                                    <div class="food-macros">
+                                        <span>Protein: 12g</span>
+                                        <span>Carbs: 2g</span>
+                                        <span>Fats: 14g</span>
+                                    </div>
+                                </div>
+                                <div class="food-calories">
+                                    <span>180 cal</span>
+                                    <div class="food-actions">
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="food-item">
+                                <div class="food-info">
+                                    <h4>Whole Wheat Toast</h4>
+                                    <p>2 slices with avocado</p>
+                                    <div class="food-macros">
+                                        <span>Protein: 8g</span>
+                                        <span>Carbs: 34g</span>
+                                        <span>Fats: 10g</span>
+                                    </div>
+                                </div>
+                                <div class="food-calories">
+                                    <span>240 cal</span>
+                                    <div class="food-actions">
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="food-item">
+                                <div class="food-info">
+                                    <h4>Greek Yogurt</h4>
+                                    <p>1 cup with berries</p>
+                                    <div class="food-macros">
+                                        <span>Protein: 18g</span>
+                                        <span>Carbs: 20g</span>
+                                        <span>Fats: 5g</span>
+                                    </div>
+                                </div>
+                                <div class="food-calories">
+                                    <span>100 cal</span>
+                                    <div class="food-actions">
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-text add-food-to-meal">
+                            <i class="fas fa-plus"></i> Add food to breakfast
+                        </button>
+                    </div>
+
+                    <div class="meal-section">
+                        <div class="meal-header">
+                            <h3><i class="fas fa-hamburger"></i> Lunch</h3>
+                            <span class="meal-calories">720 cal</span>
+                        </div>
+                        <div class="food-items">
+                            <div class="food-item">
+                                <div class="food-info">
+                                    <h4>Grilled Chicken Salad</h4>
+                                    <p>Mixed greens, 150g chicken, olive oil dressing</p>
+                                    <div class="food-macros">
+                                        <span>Protein: 42g</span>
+                                        <span>Carbs: 12g</span>
+                                        <span>Fats: 18g</span>
+                                    </div>
+                                </div>
+                                <div class="food-calories">
+                                    <span>380 cal</span>
+                                    <div class="food-actions">
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="food-item">
+                                <div class="food-info">
+                                    <h4>Quinoa</h4>
+                                    <p>1/2 cup cooked</p>
+                                    <div class="food-macros">
+                                        <span>Protein: 8g</span>
+                                        <span>Carbs: 40g</span>
+                                        <span>Fats: 4g</span>
+                                    </div>
+                                </div>
+                                <div class="food-calories">
+                                    <span>220 cal</span>
+                                    <div class="food-actions">
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="food-item">
+                                <div class="food-info">
+                                    <h4>Green Smoothie</h4>
+                                    <p>Spinach, banana, almond milk</p>
+                                    <div class="food-macros">
+                                        <span>Protein: 6g</span>
+                                        <span>Carbs: 38g</span>
+                                        <span>Fats: 2g</span>
+                                    </div>
+                                </div>
+                                <div class="food-calories">
+                                    <span>120 cal</span>
+                                    <div class="food-actions">
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-text add-food-to-meal">
+                            <i class="fas fa-plus"></i> Add food to lunch
+                        </button>
+                    </div>
+
+                    <div class="meal-section">
+                        <div class="meal-header">
+                            <h3><i class="fas fa-utensils"></i> Dinner</h3>
+                            <span class="meal-calories">410 cal</span>
+                        </div>
+                        <div class="food-items">
+                            <div class="food-item">
+                                <div class="food-info">
+                                    <h4>Salmon Fillet</h4>
+                                    <p>200g baked with lemon</p>
+                                    <div class="food-macros">
+                                        <span>Protein: 36g</span>
+                                        <span>Carbs: 0g</span>
+                                        <span>Fats: 22g</span>
+                                    </div>
+                                </div>
+                                <div class="food-calories">
+                                    <span>340 cal</span>
+                                    <div class="food-actions">
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="food-item">
+                                <div class="food-info">
+                                    <h4>Steamed Broccoli</h4>
+                                    <p>1 cup</p>
+                                    <div class="food-macros">
+                                        <span>Protein: 4g</span>
+                                        <span>Carbs: 10g</span>
+                                        <span>Fats: 0g</span>
+                                    </div>
+                                </div>
+                                <div class="food-calories">
+                                    <span>70 cal</span>
+                                    <div class="food-actions">
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-text add-food-to-meal">
+                            <i class="fas fa-plus"></i> Add food to dinner
+                        </button>
+                    </div>
+
+                    <div class="meal-section">
+                        <div class="meal-header">
+                            <h3><i class="fas fa-apple-alt"></i> Snacks</h3>
+                            <span class="meal-calories">210 cal</span>
+                        </div>
+                        <div class="food-items">
+                            <div class="food-item">
+                                <div class="food-info">
+                                    <h4>Almonds</h4>
+                                    <p>Handful (about 28g)</p>
+                                    <div class="food-macros">
+                                        <span>Protein: 6g</span>
+                                        <span>Carbs: 6g</span>
+                                        <span>Fats: 14g</span>
+                                    </div>
+                                </div>
+                                <div class="food-calories">
+                                    <span>160 cal</span>
+                                    <div class="food-actions">
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="food-item">
+                                <div class="food-info">
+                                    <h4>Protein Shake</h4>
+                                    <p>1 scoop with water</p>
+                                    <div class="food-macros">
+                                        <span>Protein: 24g</span>
+                                        <span>Carbs: 4g</span>
+                                        <span>Fats: 2g</span>
+                                    </div>
+                                </div>
+                                <div class="food-calories">
+                                    <span>120 cal</span>
+                                    <div class="food-actions">
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-text add-food-to-meal">
+                            <i class="fas fa-plus"></i> Add snack
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Water Intake -->
+                <div class="water-intake">
+                    <h3><i class="fas fa-tint"></i> Water Intake</h3>
+                    <div class="water-tracker">
+                        <div class="water-glasses">
+                            <div class="glass" data-glass="1"><i class="fas fa-glass-whiskey"></i></div>
+                            <div class="glass" data-glass="2"><i class="fas fa-glass-whiskey"></i></div>
+                            <div class="glass" data-glass="3"><i class="fas fa-glass-whiskey"></i></div>
+                            <div class="glass" data-glass="4"><i class="fas fa-glass-whiskey"></i></div>
+                            <div class="glass" data-glass="5"><i class="fas fa-glass-whiskey"></i></div>
+                            <div class="glass" data-glass="6"><i class="fas fa-glass-whiskey"></i></div>
+                            <div class="glass" data-glass="7"><i class="fas fa-glass-whiskey"></i></div>
+                            <div class="glass" data-glass="8"><i class="fas fa-glass-whiskey"></i></div>
+                        </div>
+                        <div class="water-progress">
+                            <span class="water-amount">5 glasses</span>
+                            <span class="water-goal">of 8 daily goal</span>
+                            <button class="btn btn-text" id="addWaterBtn">+ Add Water</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nutrition Charts -->
+                <div class="nutrition-charts">
+                    <div class="chart-container">
+                        <h2>Macronutrient Distribution</h2>
+                        <div class="chart" id="macroPieChart"></div>
+                    </div>
+                    <div class="chart-container">
+                        <h2>Weekly Calorie Intake</h2>
+                        <div class="chart" id="calorieTrendChart"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="js/nutrition.js"></script>
+</body>
+</html>
